@@ -2,9 +2,9 @@ def bankers_formula(p, resource, allocation, max_allo):
     process, need, n = [" "], [" "], [max_allo[i] - allocation[i] for i in range(len(p))]
     return_, available, finished = [" "], [(resource - sum(allocation))], [0] * len(p) 
 
-    while True:
+    while True: 
         np = None
-        for i in range(len(p)):
+        for i in range(len(p)):  # This selects the job that will be processed
             if n[i] <= available[-1] and finished[i] == 0:
                 process.extend([f"P{i}", f"P{i} Ex"])
                 need.extend([n[i], " "])
@@ -15,7 +15,7 @@ def bankers_formula(p, resource, allocation, max_allo):
                 np = process[-1]
                 break
 
-        if np is None:
+        if np is None:  # If no jobs was selected it will stop the loop
             break
 
     return process, need, return_, available, finished
